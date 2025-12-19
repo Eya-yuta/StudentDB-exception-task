@@ -14,7 +14,17 @@ public class StudentService {
         return repo.getAllStudents();
     }
 
-    public Student findStudentById(String id) {
-            return repo.findStudentById(id);
+    //
+    /*public Optional<Student> getStudentById(String id) {
+        return repo.findById(id);
+    }*/
+
+    public void findStudentById(String id) {
+        try {
+            Student student = repo.findStudentById(id);
+            System.out.println("Student gefunden: " + student.name());
+        } catch (NoStudentRunTimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
