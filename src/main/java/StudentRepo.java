@@ -12,8 +12,18 @@ public class StudentRepo {
         students.put(student.id(), student);
         return student;
     }
-
-    public Optional<Student> findStudentById(String id) {
+    //findStudentById with optional (if student not found)
+    /*public Optional<Student> findStudentById(String id) {
         return Optional.ofNullable(students.get(id));
+        }*/
+    //findStudentById with an unchecked exception (if student not found)
+    public Student findStudentById(String id) {
+
+            Student student = students.get(id);
+            if (student == null) {
+                throw new NoStudentRunTimeException(id);
+            }
+            System.out.println(student);
+            return student;
     }
 }
